@@ -9,6 +9,7 @@ class AccountsDB:
             "account_amount": 404.0,
             "is_available": True
         }
+        ...
     }
     """
     def __init__(self):
@@ -29,6 +30,8 @@ class AccountsDB:
         if account is None:
             raise KeyError("IBAN is not found")
 
+        return account
+
     def get_account_by_iban(self, iban: str) -> dict:
         account = self._get_account(iban)
         account["IBAN"] = iban
@@ -45,5 +48,3 @@ class AccountsDB:
     def set_account_availability(self, iban: str, is_available: bool) -> None:
         account = self._get_account(iban)
         account["is_available"] = is_available
-
-
