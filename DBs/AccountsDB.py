@@ -1,3 +1,6 @@
+from threading import Lock
+
+
 class AccountsDB:
     """
     A class that contains all accounts
@@ -14,13 +17,49 @@ class AccountsDB:
     """
     def __init__(self):
         self.accounts = {
-            "test403": {
+            "A": {
                 "account_amount": 100.0,
-                "is_available": True
+                "is_available": Lock()
             },
-            "test404": {
-                "account_amount": 200.0,
-                "is_available": True
+            "B": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "C": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "D": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "E": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "F": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "G": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "H": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "I": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "Z": {
+                "account_amount": 100.0,
+                "is_available": Lock()
+            },
+            "Y": {
+                "account_amount": 100.0,
+                "is_available": Lock()
             }
         }
 
@@ -32,18 +71,25 @@ class AccountsDB:
 
         return account
 
+    def get_all_accounts(self):
+        return self.accounts
+
     def get_account_by_iban(self, iban: str) -> dict:
         account = self._get_account(iban)
         account["IBAN"] = iban
         return account
 
-    def get_availability(self, iban: str) -> bool:
+    def get_availability(self, iban: str) -> Lock:
         account = self._get_account(iban)
         return account["is_available"]
 
     def set_account_amount(self, iban: str, amount: float) -> None:
         account = self._get_account(iban)
         account["account_amount"] = amount
+
+    def get_amount_by_iban(self, iban: str) -> float:
+        account = self._get_account(iban)
+        return account["account_amount"]
 
     def set_account_availability(self, iban: str, is_available: bool) -> None:
         account = self._get_account(iban)
