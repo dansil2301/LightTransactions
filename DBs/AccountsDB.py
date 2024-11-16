@@ -15,7 +15,7 @@ class AccountsDB:
         ...
     }
     """
-    def __init__(self):
+    def __init__(self, accounts: dict):
         self.accounts = {
             "A": {
                 "account_amount": 100.0,

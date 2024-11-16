@@ -1,11 +1,13 @@
-from threading import Thread, Semaphore, Lock
+import random
+from threading import Thread, Lock
+from ThreadConfig import accounts_conf, waiting_list_conf
 from time import sleep
 
 from DBs.AccountsDB import AccountsDB
 from DBs.WaitingListDB import WaitingListDB
 
-accounts = AccountsDB()
-waiting_list = WaitingListDB()
+accounts = AccountsDB(accounts_conf)
+waiting_list = WaitingListDB(waiting_list_conf)
 
 N_THREADS = 5
 
@@ -37,9 +39,11 @@ def test(i: int):
             if accounts.get_amount_by_iban(transaction["from"]) - transaction["amount"] < 0:
                 continue
 
-            sleep(1)
-            accounts.set_account_amount(transaction["from"], accounts.get_amount_by_iban(transaction["from"]) - transaction["amount"])
-            accounts.set_account_amount(transaction["to"], accounts.get_amount_by_iban(transaction["to"]) + transaction["amount"])
+            sleep(random.uniform(0, 1.5))
+            accounts.set_account_amount(transaction["from"],
+                                        accounts.get_amount_by_iban(transaction["from"]) - transaction["amount"])
+            accounts.set_account_amount(transaction["to"],
+                                        accounts.get_amount_by_iban(transaction["to"]) + transaction["amount"])
 
             with mutex_counter:
                 waiting_list.delete_from_to_iban(transaction["from"], transaction["to"])

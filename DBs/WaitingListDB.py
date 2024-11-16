@@ -16,7 +16,7 @@ class WaitingListDB:
         ...
     ]
     """
-    def __init__(self):
+    def __init__(self, waiting_list: list):
         self.readerWriters = ReadersWriters("Writers-First", 0.5)
         self.waiting_list = [
             {
@@ -52,6 +52,21 @@ class WaitingListDB:
             {
                 "from": "Z",
                 "to": "Y",
+                "amount": 10
+            },
+            {
+                "from": "A",
+                "to": "D",
+                "amount": 10
+            },
+            {
+                "from": "E",
+                "to": "G",
+                "amount": 10
+            },
+            {
+                "from": "G",
+                "to": "H",
                 "amount": 10
             }
         ]
