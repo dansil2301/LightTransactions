@@ -18,58 +18,7 @@ class WaitingListDB:
     """
     def __init__(self, waiting_list: list):
         self.readerWriters = ReadersWriters("Writers-First", 0.5)
-        self.waiting_list = [
-            {
-                "from": "A",
-                "to": "B",
-                "amount": 10  # A 90 B 110
-            },
-            {
-                "from": "B",
-                "to": "C",
-                "amount": 110  # B 0 C 210
-            },
-            {
-                "from": "C",
-                "to": "D",
-                "amount": 10  # C 200 D 110
-            },
-            {
-                "from": "D",
-                "to": "A",
-                "amount": 10  # D 100 A 100
-            },
-            {
-                "from": "D",
-                "to": "E",
-                "amount": 10
-            },
-            {
-                "from": "F",
-                "to": "G",
-                "amount": 10
-            },
-            {
-                "from": "Z",
-                "to": "Y",
-                "amount": 10
-            },
-            {
-                "from": "A",
-                "to": "D",
-                "amount": 10
-            },
-            {
-                "from": "E",
-                "to": "G",
-                "amount": 10
-            },
-            {
-                "from": "G",
-                "to": "H",
-                "amount": 10
-            }
-        ]
+        self.waiting_list = waiting_list
 
     def get_first_by_iban(self, iban: str) -> dict:
         self.readerWriters.reader_enter()

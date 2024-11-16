@@ -16,52 +16,7 @@ class AccountsDB:
     }
     """
     def __init__(self, accounts: dict):
-        self.accounts = {
-            "A": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "B": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "C": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "D": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "E": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "F": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "G": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "H": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "I": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "Z": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            },
-            "Y": {
-                "account_amount": 100.0,
-                "is_available": Lock()
-            }
-        }
+        self.accounts = accounts
 
     def _get_account(self, iban: str) -> dict:
         account = self.accounts.get(iban, None)
