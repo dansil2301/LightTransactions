@@ -6,12 +6,12 @@ waiting_list_conf = [
             {
                 "from": "A",
                 "to": "B",
-                "amount": 10  # A 90 B 110
+                "amount": 200  # A 90 B 110
             },
             {
                 "from": "B",
                 "to": "C",
-                "amount": 110  # B 0 C 210
+                "amount": 10  # B 0 C 210
             },
             {
                 "from": "C",
