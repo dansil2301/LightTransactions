@@ -71,7 +71,11 @@ def test_linear():
         account_to = transaction["to"]
         amount = transaction["amount"]
 
-        handler.handle_transaction(account_from, account_to, amount)
+        try:
+            handler.handle_transaction(account_from, account_to, amount)
+        except Exception as e:
+            print(e)
+
         print(f"Linear transaction from {account_from} to {account_to}")
     end_time = time.time()
     LINEAR_TIME = end_time - start_time

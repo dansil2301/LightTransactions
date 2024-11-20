@@ -59,5 +59,6 @@ class TransactionSync:
                 self._transfer_transaction_from_waiting_list(from_acc, to_acc, amount)
                 self._deletion_from_waiting_list(from_acc, to_acc)
         except Exception as e:
+            # not a very well thought through mechanism here
             self._deletion_from_waiting_list(from_acc, to_acc)
             print(e)
